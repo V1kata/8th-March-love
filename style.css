@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: pink;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#start-screen,
+#end-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+#score,
+#timer {
+    position: absolute;
+    top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+#score {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#timer {
+    right: 20px;
+}
+
+#end-screen img {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background: red;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+

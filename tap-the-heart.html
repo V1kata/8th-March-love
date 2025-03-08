@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Tap the Heart ❤️</title>
+</head>
+
+<body>
+    <div id="start-screen">
+        <h1>Tap the Heart ❤️</h1>
+        <button onclick="startGame()">Start</button>
+    </div>
+    <div id="game-container">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time: 30</div>
+    </div>
+    <div id="end-screen" style="display: none;">
+        <h1>Game Over!</h1>
+        <p id="final-score"></p>
+        <p id="textMessage"></p>
+        <img id="result-image" src="" alt="Your special image">
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+    <script>
+        let score = 0;
+        let timeLeft = 30;
+        let gameInterval, timerInterval;
+
+        const startScreen = document.getElementById('start-screen');
+        const gameContainer = document.getElementById('game-container');
+        const endScreen = document.getElementById('end-screen');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const finalScore = document.getElementById('final-score');
+        const resultImage = document.getElementById('result-image');
+        const textMessage = document.getElementById('textMessage');
+
+        function startGame() {
+            startScreen.style.display = 'none';
+            gameContainer.style.display = 'block';
+            score = 0;
+            timeLeft = 30;
+            scoreDisplay.textContent = `Score: ${score}`;
+            timerDisplay.textContent = `Time: ${timeLeft}`;
+            gameInterval = setInterval(createHeart, 1000);
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function createHeart() {
+            if (timeLeft <= 0) return;
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            let x = Math.random() * (window.innerWidth - 50);
+            let y = Math.random() * (window.innerHeight - 50);
+
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+
+            heart.addEventListener('click', () => {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                heart.remove();
+            });
+
+            gameContainer.appendChild(heart);
+
+            setTimeout(() => {
+                if (document.body.contains(heart)) {
+                    heart.remove();
+                }
+            }, 900);
+        }
+
+        function updateTimer() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timerDisplay.textContent = `Time: ${timeLeft}`;
+            } else {
+                clearInterval(gameInterval);
+                clearInterval(timerInterval);
+                endGame();
+            }
+        }
+
+        function endGame() {
+            gameContainer.style.display = 'none';
+            endScreen.style.display = 'flex';
+            finalScore.textContent = `Your Score: ${score}`;
+
+            if (score < 5) {
+                resultImage.src = 'images/dissapointed.jpg';
+                textMessage.textContent = 'You can do better!';
+            } else if (score < 15) {
+                resultImage.src = 'images/middle.jpg';
+                textMessage.textContent = 'Nuh uh, go again!';
+            } else {
+                resultImage.src = 'images/win.jpg';
+                textMessage.textContent = 'You are a winner! Awesome! A heart from you!';
+            }
+        }
+
+        function restartGame() {
+            endScreen.style.display = 'none';
+            startScreen.style.display = 'flex';
+        }
+    </script>
+</body>
+
+</html>

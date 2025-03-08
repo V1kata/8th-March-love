@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: pink;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#start-screen,
+#end-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.memory-card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.memory-card .front,
+.memory-card .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+
+.memory-card .front {
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: red;
+}
+
+.memory-card .back {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #333;
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .front {
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .back {
+    transform: rotateY(0);
+}
+
+#score,
+#timer {
+    position: absolute;
+    top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+#score {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#timer {
+    right: 20px;
+}
+
+#end-screen img {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background: red;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cards-container {
+    flex-wrap: wrap; /* Allow the cards to wrap */
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+.memory-card {
+    width: 100px; /* Fixed width for cards */
+    height: 100px; /* Fixed height for cards */
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    margin: 5px; /* Added some space between cards */
+}

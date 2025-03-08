@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./memory.css">
+    <title>Memory Match 💖</title>
+</head>
+
+<body>
+    <div id="start-screen">
+        <h1>Memory Match 💖</h1>
+        <button onclick="startGame()">Start</button>
+    </div>
+    <div id="game-container" style="
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time: 30</div>
+        <div id="cards-container" class="cards-container"></div>
+    </div>
+    <div id="end-screen" style="display: none;">
+        <h1>Game Over!</h1>
+        <p id="final-score"></p>
+        <p id="textMessage"></p>
+        <img id="result-image" src="" alt="Your special image">
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+
+    <script src="memory.js"></script>
+</body>
+
+</html>
